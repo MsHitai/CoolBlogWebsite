@@ -1,13 +1,13 @@
-package com.example.CoolBlogWebsite;
+package com.coolblogwebsite;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CoolBlogWebsiteApplication {
+public class CoolBlogWebApp {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CoolBlogWebsiteApplication.class, args);
+		SpringApplication.run(CoolBlogWebApp.class, args);
 	}
 
 }
