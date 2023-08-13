@@ -1,4 +1,4 @@
-# CoolBlogWebsite
+# Blog website
 my project for a blogging website.
 
 **Features to implement:**
