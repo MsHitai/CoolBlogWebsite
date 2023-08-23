@@ -1,4 +1,4 @@
-package com.coolblogwebsite.config;
+package com.blogapp.config;
 
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;

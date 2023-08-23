@@ -1,4 +1,4 @@
-package com.coolblogwebsite.model;
+package com.blogapp.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -24,14 +24,13 @@ public class Role {
 
     private String name;
 
-    @ManyToMany(fetch = FetchType.LAZY,
+    @ManyToMany(fetch = FetchType.EAGER,
             cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinTable(
             name = "users_roles",
             joinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")}
     )
-    @ToString.Exclude
     private List<User> users = new ArrayList<>();
 
     @Override

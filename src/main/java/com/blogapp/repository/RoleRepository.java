@@ -1,6 +1,6 @@
-package com.coolblogwebsite.repository;
+package com.blogapp.repository;
 
-import com.coolblogwebsite.model.Role;
+import com.blogapp.model.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
