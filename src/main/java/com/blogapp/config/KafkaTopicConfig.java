@@ -13,4 +13,10 @@ public class KafkaTopicConfig {
         return TopicBuilder.name("webBlog")
                 .build();
     }
+
+    @Bean
+    public NewTopic postViewTopic() {
+        return TopicBuilder.name("posts-views")
+                .build();
+    }
 }

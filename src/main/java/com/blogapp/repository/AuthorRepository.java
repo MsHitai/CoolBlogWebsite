@@ -1,11 +1,9 @@
 package com.blogapp.repository;
 
-import com.blogapp.model.Role;
+import com.blogapp.model.Author;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface RoleRepository extends JpaRepository<Role, Long> {
-
-    Role findByName(String name);
+public interface AuthorRepository extends JpaRepository<Author, Long> {
 }

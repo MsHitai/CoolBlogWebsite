@@ -4,41 +4,31 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
 
-import java.time.LocalDateTime;
 import java.util.Objects;
-import java.util.concurrent.atomic.AtomicInteger;
 
 @Getter
 @Setter
 @ToString
-@Entity
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "posts")
-public class Post {
+@Builder
+@Entity
+@Table(name = "authors")
+public class Author {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "text")
-    private String text;
+    @Column(name = "name")
+    private String name;
 
-    @Lob
-    @Column(name = "image", length = 1000)
-    private byte[] image;
+    @Column(name = "email")
+    private String email;
 
-    @Column(name = "created", nullable = false)
-    private LocalDateTime created;
-
-    @Column(name = "views")
-    private AtomicInteger viewCount;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "author_id")
-    @ToString.Exclude
-    private Author author;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @Override
     public final boolean equals(Object o) {
@@ -49,8 +39,8 @@ public class Post {
         Class<?> thisEffectiveClass = this instanceof HibernateProxy ?
                 ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass() : this.getClass();
         if (thisEffectiveClass != oEffectiveClass) return false;
-        Post post = (Post) o;
-        return getId() != null && Objects.equals(getId(), post.getId());
+        Author author = (Author) o;
+        return getId() != null && Objects.equals(getId(), author.getId());
     }
 
     @Override

@@ -1,23 +1,27 @@
 # Blog website
 my project for a blogging website.
 
-**Features to implement:**
+**Features:**
 
 1. Database Design:
-    - Design and develop an appropriate database schema to store blog posts, user information, and other relevant data.
-    - Implement efficient data storage and retrieval mechanisms to support the blog website's requirements.
+    - Connected PostgreSQL via JPA Hibernate and schema.sql.
 
 2. User Management:
-    - Implement user authentication and authorization mechanisms for secure logins and access control.
-    - Develop user registration and profile management functionalities, allowing users to update their information and manage their accounts.
+    - User authentication and authorization via Spring Security and JWT.
+    - Users can become authors, can update their information
 
 3. Blog Post Management:
-    - Develop modules to support blog post creation, editing, and deletion by authorized users.
-    - Implement features such as categorization, tags, and search functionality to enhance content organization and discoverability.
+    - Users with roles of Authors can create posts
+    - Views are calculated with the help of Kafka
 
 4. Commenting System:
-    - Design and create a commenting system that enables users to engage and interact with blog posts.
-    - Implement moderation features to manage and control user comments, including approval and deletion functionalities.
+    - to be done
+
+**to implement:**
+1. Creating/ editing posts requires the role Author
+2. Users should be able to read without authentication, comment and like with role user
+3. categorization, tags, and search functionality for posts
+4. comments to be created/ edited / deleted by wish
 
 **Important notes:**
 
