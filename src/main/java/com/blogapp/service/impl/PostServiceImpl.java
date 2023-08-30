@@ -11,22 +11,17 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
 @Service
 @RequiredArgsConstructor
 public class PostServiceImpl implements PostService {
 
     private final KafkaTemplate<String, String> kafkaTemplate;
     private final PostRepository postRepository;
-    private AtomicInteger viewCount = new AtomicInteger(0);
 
     @Override
     public PostDto viewPost(Long postId) {
         Post post = checkPostId(postId);
         kafkaTemplate.send("posts-views", String.valueOf(postId));
-        post.setViewCount(viewCount);
-        postRepository.save(post);
         return PostMapper.mapToPostDto(post);
     }
 
@@ -36,7 +31,9 @@ public class PostServiceImpl implements PostService {
     }
 
     @KafkaListener(topics = "posts-views", groupId = "posts-views-Id")
-    void viewListener(String data) {
-        viewCount.incrementAndGet();
+    void viewListener(String postId) {
+        Post post = checkPostId(Long.parseLong(postId));
+        post.getViewCount().incrementAndGet();
+        postRepository.save(post);
     }
 }
