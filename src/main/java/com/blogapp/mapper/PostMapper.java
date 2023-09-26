@@ -12,7 +12,7 @@ public class PostMapper {
     public Post mapToPost(PostDto postDto, Author author) {
         return Post.builder()
                 .id(postDto.getId())
-                .image(postDto.getImage())
+                .header(postDto.getHeader())
                 .text(postDto.getText())
                 .author(author)
                 .created(postDto.getCreated())
@@ -23,8 +23,8 @@ public class PostMapper {
     public PostDto mapToPostDto(Post post) {
         return PostDto.builder()
                 .id(post.getId())
+                .header(post.getHeader())
                 .text(post.getText())
-                .image(post.getImage())
                 .created(post.getCreated())
                 .authorId(post.getAuthor().getId())
                 .viewCount(post.getViewCount())

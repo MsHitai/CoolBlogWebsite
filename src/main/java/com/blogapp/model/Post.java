@@ -22,12 +22,11 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "text")
+    @Column(name = "text", nullable = false, length = 2000)
     private String text;
 
-    @Lob
-    @Column(name = "image", length = 1000)
-    private byte[] image;
+    @Column(name = "header", nullable = false, length = 512)
+    private String header;
 
     @Column(name = "created", nullable = false)
     private LocalDateTime created;

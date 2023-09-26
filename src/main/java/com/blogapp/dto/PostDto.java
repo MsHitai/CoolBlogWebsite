@@ -15,7 +15,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class PostDto {
     private Long id;
     private String text;
-    private byte[] image;
+    private String header;
     private LocalDateTime created;
     private AtomicInteger viewCount;
     private Long authorId;
